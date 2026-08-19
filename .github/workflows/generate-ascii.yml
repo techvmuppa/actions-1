@@ -7,8 +7,9 @@ jobs:
     ascii_job:
         runs-on: ubuntu-latest
         defaults:
-            run: 
-                working-directory: techvmuppa/actions-1/workflows
+            run:
+              shell: bash
+              working-directory: ./workflows
         steps:
             - name: Checkout Repo
               uses: actions/checkout@v7
