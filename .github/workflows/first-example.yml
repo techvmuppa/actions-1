@@ -9,17 +9,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v7
 
-      - name: List and Read File
-          run: |
-            echo "My first github actions job"
-            ls -ltra
-            cat README.md
+    - name: Checkout repository
+      uses: actions/checkout@v7
 
-      -name: Generate ASCII Artwork
-        run: cowsay -f dragon "Run for a cover, I'm a DRAGON.......WrarWrar" >> dragon.txt
+    - name: List and Read File
+      run: |
+        echo "My first github actions job"
+        ls -ltra
+        cat README.md
+
+    - name: Generate ASCII Artwork
+      run: cowsay -f dragon "Run for a cover, I'm a DRAGON.......WrarWrar" >> dragon.txt
       
       # - name: List files
       #   run: ls
