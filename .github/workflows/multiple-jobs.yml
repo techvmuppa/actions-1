@@ -1,0 +1,38 @@
+name: Multiple Jobs 
+
+on:
+    push
+
+jobs:
+    build_job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Install Dependencies
+              run: sudo apt-get install cowsay -y
+
+            - name: Execute Cowfay
+              run: cowsay -f dragon "Run for a cover, I'm a DRAGON.......WrarWrar" >> dragon.txt
+
+            - name: Sleep for 30 Seconds
+              run: sleep 30
+    
+    test_job:
+      needs: build_job
+      runs-on: ubuntu-latest
+      steps:
+
+        - name: Sleep for 10 Seconds
+          run: sleep 10
+
+        - name: Test file exists
+          run: grep -i "dragon" dragon.txt
+
+    deploy_job:
+      needs: [test_job]
+      runs-on: ubuntu-latest
+      steps:
+        - name: Read text file
+          run: cat dragon.txt
+
+
+         
