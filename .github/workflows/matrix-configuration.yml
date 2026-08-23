@@ -6,14 +6,13 @@ on:
 
 jobs:
     deploy:
-
         strategy:
-
-            fail-fast: false
+            fail-fast: true
             max-parallel: 2
             matrix:
                 os: [ubuntu-latest, ubuntu-20.04, windows-latest]
                 images: [hello-world, alpine]
+                
             exclude:
                 - images: alpine
                   os: windows-latest
@@ -22,8 +21,9 @@ jobs:
                   os: ubunt-20.04
         runs-on: ${{matrix.os}}
         steps:
-        - name: Docker Details
-          run: docker info
 
-        - name: Run Images ${{matrix.os}}
-          run: docker run ${{matrix.images}}
+            - name: Docker Details
+              run: docker info
+
+            - name: Run Images ${{matrix.os}}
+              run: docker run ${{matrix.images}}
