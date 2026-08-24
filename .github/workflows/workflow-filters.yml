@@ -6,7 +6,7 @@ on:
         branches:
             - main
             - '!feature/*'  #ignore pushing to anybranch name starts with feature
-    pull-request:
+    pull_request:
         types:
             - opened
             - closed
