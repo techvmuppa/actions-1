@@ -2,8 +2,6 @@ name: Workflow Filtering and Activities
 
 on:
     workflow-dispatch:
-    schdule:
-        - cron: "*/59 * * * *"
     push:
         branches:
             - main
