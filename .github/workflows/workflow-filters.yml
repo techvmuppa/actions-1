@@ -1,7 +1,7 @@
 name: Workflow Filtering and Activities
 
 on:
-    workflow-dispatch:
+    workflow_dispatch:
     push:
         branches:
             - main
