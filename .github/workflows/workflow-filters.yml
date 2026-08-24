@@ -1,0 +1,25 @@
+name: Workflow Filtering and Activities
+
+on:
+    workflow-dispatch:
+    schdule:
+        - cron: "*/59 * * * *"
+    push:
+        branches:
+            - main
+            - '!feature/*'  #ignore pushing to anybranch name starts with feature
+    pull-request:
+        types:
+            - opened
+            - closed
+        paths-ignore:
+            - README.md
+        branches:
+            - main
+
+
+jobs:
+    hello:
+        runs-on: ubuntu-latest
+        steps:
+            - run: echo this workflow/job/step is executed for event type ${{ github.event_name}}
